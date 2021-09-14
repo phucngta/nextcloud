@@ -1,0 +1,31 @@
+version: '2'
+
+volumes:
+  nextcloud:
+
+services:
+  app:
+    image: nextcloud
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - ./skeleton:/var/www/html/core/skeleton
+      - nextcloud:/var/www/html
+    networks:
+      - nextcloud-network
+
+
+  collabora:
+    image: collabora/code
+    container_name: collabora
+    ports:
+      - 9980:9980
+    networks:
+      - nextcloud-network
+    environment:
+      - extra_params=--o:ssl.enable=false
+
+networks:
+  nextcloud-network:
+    driver: bridge
