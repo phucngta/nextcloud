@@ -16,15 +16,15 @@ services:
       - nextcloud-network
 
 
-  collabora:
-    image: collabora/code
-    container_name: collabora
-    ports:
-      - 9980:9980
-    networks:
-      - nextcloud-network
-    environment:
-      - extra_params=--o:ssl.enable=false
+  # collabora:
+  #   image: collabora/code
+  #   container_name: collabora
+  #   ports:
+  #     - 9980:9980
+  #   networks:
+  #     - nextcloud-network
+  #   environment:
+  #     - extra_params=--o:ssl.enable=false
 
 networks:
   nextcloud-network:
